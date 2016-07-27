@@ -195,29 +195,17 @@ public class Sieve {
      * @param args first element
      * @return maximum size of array
      */
-    public static int calculateMax(String[] args) throws Exception {
+    public static int calculateMax(String[] args) {
         int toReturn = -1; // default (invalid) value
         if (args.length > 0) {
-            try {
-
-                toReturn = (int) Integer.parseInt(args[0]);
-                if (toReturn < 1) {
-                    // User did not enter a valid integer
-                    throw new IllegalArgumentException();
-                }
-            }catch (IllegalArgumentException error) {
-             //
-             System.out.println("No Argument Entered");
-                System.out.println(error.getMessage());
-             System.exit(0);
-         }
-        }else
-        {
-            try{
+            toReturn = (int) Integer.parseInt(args[0]);
+            if (toReturn < 1) {
+                // User did not enter a valid integer
                 throw new IllegalArgumentException();
-            } catch (IndexOutOfBoundsException error) {
-                error.printStackTrace();
             }
+        } else {
+            // User forgot to enter an argument!
+            throw new IllegalArgumentException();
         }
         return toReturn;
     }
@@ -245,7 +233,7 @@ public class Sieve {
 
         try {
             _max = calculateMax(args);
-        } catch (Exception ex) {
+        } catch (IllegalArgumentException ex) {
             System.out.println("You forgot to enter a valid integer (> 0)!");
             System.out.println("Assuming you meant to type 100...");
             _max = 100;

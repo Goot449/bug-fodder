@@ -15,15 +15,22 @@ public class SieveTest {
     }
 
     @org.junit.Test
-    public void calculateMax() throws Exception {
+    public void calculateMaxValidArgument() throws Exception {
         String[] length = {"20"};
         int max = Sieve.calculateMax(length);
         assertEquals(max, 20);
     }
 
+    @org.junit.Test
+    public void calculateMaxMultipleArguments() throws Exception {
+        String[] length = {"45", "30", "50"};
+        int max = Sieve.calculateMax(length);
+        assertEquals(max, 45);
+    }
+
 
     @org.junit.Test
-    public void calculateMax2() throws Exception {
+    public void calculateMaxNoArgument() throws Exception {
 
         try {
             String[] length = {};
